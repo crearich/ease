@@ -1,0 +1,58 @@
+<script src="auth.js"></script>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="blob"></div>
+    <div class="wrapper">
+        <form action="">
+            <h2>登录</h2>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="mail-open-outline"></ion-icon></span>
+                <input type="text" name="username" required>
+                <label>邮箱或账号</label>
+            </div>
+            <div class="input-box">
+                <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                <input type="password" required>
+                <label>密码</label>
+            </div>
+            <div class="remeber-forgot">
+                <label>
+                    <input type="checkbox">记住密码
+                </label>
+                <a href="forgotpass.html">忘记密码</a>
+            </div>
+            <button type="submit">登录按钮</button>
+            <div class="register-link">
+                <p>还没有账号？ <a href="signup.html">点击注册</a></p>
+            </div>
+        </form>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons.js"></script>
+    
+<!-- 登录跳转功能 -->
+ <script>
+   var btn = document.getElementById("btn");
+   var usernameInput = document.getElementById("username");
+   var passwordInput = document.getElementById("password");
+    btn.onclick = function() {
+        var username = usernameInput.value;
+        var password = passwordInput.value;
+// 发送ajax到登录接口
+        $.post("./php/login.php", {username: username, password: password}, function(data) {
+          console.log(data);
+        });
+    }
+
+</script>
+    
+</body>
+</html>
